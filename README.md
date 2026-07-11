@@ -2,7 +2,7 @@
 
 A signal-detection pipeline that identifies UK mid-market financial-services
 companies undergoing private-equity ownership changes, using public data
-sources — and surfaces them as a ranked, analyst-ready shortlist.
+sources and surfaces them as a ranked, analyst-ready shortlist.
 
 Developed as an MSc Business Analytics dissertation project (UCL) in partnership
 with Palladium Digital.
