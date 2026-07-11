@@ -1,0 +1,10 @@
+﻿requests
+pandas
+numpy
+python-dotenv
+pysentiment2
+scikit-learn
+transformers
+torch
+pytrends
+matplotlib

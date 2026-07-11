@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PE Trends Intelligence &mdash; Dashboard</title><style>
+:root{--bg:#f7f8fa;--surface:#fff;--border:#e3e7ed;--text:#1a2230;--text2:#647084;--muted:#8a94a6;
+--navy:#23395b;--accent:#2f5fa6;--green:#1f9254;--green-bg:#e6f4ec;--amber:#c0850f;--amber-bg:#fbf1dd;
+--grey:#6b7280;--grey-bg:#eef0f3;--red:#d23b34;--red-bg:#fbe9e8;--blue:#2f5fa6;--purple:#6b4ea0;
+--radius:10px;--gap:16px;--shadow:0 1px 2px rgba(20,30,50,.04),0 1px 3px rgba(20,30,50,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 56px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px;flex-wrap:wrap;gap:10px}
+.head h1{font-size:20px;font-weight:650;color:var(--navy)}
+.head .sub{font-size:12.5px;color:var(--text2);margin-top:3px}
+.head .ts{font-size:12px;color:var(--muted);text-align:right}
+.tagline{font-size:12.5px;color:var(--text2);margin-top:8px;max-width:74ch;line-height:1.5;font-style:italic}
+.vbanner{display:flex;gap:12px;align-items:flex-start;background:var(--amber-bg);border:1px solid #ecd9a8;border-radius:var(--radius);padding:13px 16px;margin-bottom:var(--gap);font-size:13px;color:#7a5608;line-height:1.5}
+.vbanner .vicon{font-size:16px;flex-shrink:0}
+.ctxhead{font-size:11px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-bottom:var(--gap)}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.metric .label{font-size:11.5px;color:var(--text2);font-weight:550;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.metric .value{font-size:28px;font-weight:680;color:var(--navy);margin-top:8px}
+.metric .unit{font-size:12px;color:var(--muted);margin-top:2px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;box-shadow:0 0 0 3px var(--red-bg)}
+.dot.pulse{animation:p 2s infinite}@keyframes p{0%,100%{opacity:1}50%{opacity:.45}}
+.row{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--gap);margin-bottom:var(--gap)}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.panel .ph{padding:15px 18px 0}.panel .pt{font-size:14px;font-weight:640;color:var(--navy)}
+.panel .hint{font-size:11.5px;color:var(--muted);margin-top:3px}.panel .pb{padding:12px 8px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{text-align:left;padding:8px 12px;font-size:10.5px;text-transform:uppercase;color:var(--text2);font-weight:600;border-bottom:1px solid var(--border)}
+tbody td{padding:11px 12px;border-bottom:1px solid var(--border)}tbody tr{cursor:pointer}tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--bg)}tbody tr.sel{background:#e7eef8}tbody tr.sel td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.co{font-weight:600;display:flex;align-items:center;gap:7px}.owner-c{color:var(--text2);font-size:12.5px}
+.date-c{color:var(--text2);font-size:12.5px;white-space:nowrap}
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.badge.High{background:var(--green-bg);color:var(--green)}.badge.Medium{background:var(--amber-bg);color:var(--amber)}.badge.Low{background:var(--grey-bg);color:var(--grey)}
+.detail{padding:18px}.detail .dco{font-size:17px;font-weight:680;color:var(--navy);display:flex;align-items:center;gap:9px}
+.newbadge{font-size:10.5px;font-weight:650;color:var(--red);background:var(--red-bg);padding:2px 8px;border-radius:20px;text-transform:uppercase}
+.detail .downer{font-size:13px;color:var(--text2);margin-top:3px}
+.sec-label{font-size:11px;font-weight:650;text-transform:uppercase;color:var(--text2);margin:18px 0 9px}
+.ev{display:flex;align-items:center;gap:11px;padding:11px 12px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px}
+.ev .et{flex:1;font-size:13px}.ev .et small{display:block;color:var(--muted);font-size:11px;margin-top:1px}
+.caveat{background:var(--amber-bg);border:1px solid #ecd9a8;border-radius:8px;padding:12px 13px;font-size:12px;color:#7a5608;margin-top:14px;line-height:1.5}
+.btn{margin-top:16px;width:100%;padding:11px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer}
+.btn:hover{background:#1a2c47}.btn.done{background:var(--green)}
+.senti{padding:18px}.senti .big{font-size:36px;font-weight:700;color:var(--navy)}.senti .biglabel{font-size:12px;color:var(--text2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{font-size:12.5px;padding:7px 14px;border-radius:20px;background:var(--grey-bg);border:1px solid var(--border);cursor:pointer;display:inline-block}
+.chip:hover{background:#e7eef8;border-color:var(--accent);color:var(--accent)}
+.chip.open{background:#e7eef8;border-color:var(--accent);color:var(--accent)}
+.topicwrap{margin-top:8px}
+.topicterms{font-size:12px;color:var(--text2);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 12px;margin-top:6px;line-height:1.6;display:none}
+.topicterms.show{display:block}
+.topicterms b{color:var(--navy)}
+.jobex{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
+.jobchip{display:inline-block;font-size:11.5px;padding:5px 11px;border-radius:14px;background:#fff;border:1px solid var(--border);color:var(--text2)}
+.jobchip em{color:var(--accent);font-style:normal;font-weight:600}
+.jobsnote{margin-top:16px;font-size:12px;color:var(--text2);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px 13px}
+.trends{padding:14px 18px 18px}
+.trow{display:grid;grid-template-columns:150px 1fr 96px;align-items:center;gap:10px;margin-bottom:7px}
+.tname{font-size:12.5px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tbar-track{height:16px;background:var(--bg);border-radius:4px;overflow:hidden}.tbar{height:100%;border-radius:4px;min-width:2px}
+.tbar.ai{background:var(--green)}.tbar.sector{background:var(--blue)}.tbar.finai{background:var(--purple)}.tbar.jargon{background:var(--grey)}
+.tval{font-size:12px;font-family:ui-monospace,Menlo,monospace;color:var(--text2);text-align:right}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;padding-top:13px;border-top:1px solid var(--border)}
+.leg{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--text2)}.leg .sw{width:11px;height:11px;border-radius:3px}
+.note{font-size:11px;color:var(--muted);margin-top:10px;font-style:italic}
+@media(max-width:880px){.metrics{grid-template-columns:repeat(2,1fr)}.row{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<div class="head"><div><h1>PE Trends Intelligence</h1>
+<div class="sub">UK mid-market financial services &middot; candidate detections &amp; sector signals</div>
+<div class="tagline">A decision-support tool for PE advisory business development &mdash; surfaces mid-market ownership changes invisible to commercial databases, enabling timely engagement with portfolio companies entering the value-creation window.</div></div>
+<div class="ts">Generated from live pipeline output<br>__GENDATE__</div></div>
+<div class="metrics">
+<div class="metric"><div class="label">Active candidates</div><div class="value">__ACTIVE__</div><div class="unit">after mid-market filtering</div></div>
+<div class="metric"><div class="label"><span class="dot pulse"></span> Recent detections</div><div class="value">__NEW__</div><div class="unit">within 30 days of latest scan</div></div>
+<div class="metric"><div class="label">FCA validated</div><div class="value">__FCA__</div><div class="unit">owner FCA-authorised</div></div>
+<div class="metric"><div class="label">PE search interest</div><div class="value">+19.1</div><div class="unit">relative index points, within-batch (Trends)</div></div>
+</div>
+<div class="vbanner"><span class="vicon">&#9888;</span><div><b>Triage leads for analyst review.</b> Ownership changes are confirmed via Companies House PSC filings but <b>not</b> recorded in Orbis M&amp;A or PitchBook. Human verification is required before outreach.</div></div>
+<div class="row">
+<div class="panel"><div class="ph"><div class="pt">Candidate detections</div><div class="hint">Click a row to see full signal evidence. Ranked by Tier-1 detection confidence (0&ndash;1 scale: High &ge;0.70, Medium 0.55&ndash;0.69, Low &lt;0.55).</div></div>
+<div class="pb"><table><thead><tr><th>Company</th><th>PE owner</th><th>Detected</th><th>Confidence</th></tr></thead><tbody id="rows"></tbody></table></div></div>
+<div class="panel"><div class="detail" id="detail"></div></div>
+</div>
+<div class="row">
+<div class="panel"><div class="senti"><div class="ctxhead">Sector context &mdash; use alongside candidate signals to assess market timing for outreach</div>
+<div class="pt" style="margin-bottom:14px">News sentiment &amp; topics</div>
+<div class="big">__NETSENT__</div><div class="biglabel">mean polarity (Loughran-McDonald, &minus;1 to +1) &middot; corpus of 153 articles</div>
+<div class="sec-label" style="margin-top:18px">Dominant LDA topics (k=3)</div><div class="hint" style="margin-bottom:8px">Click a topic to view source articles</div>
+<div class="chips" id="topics"></div>
+<div class="jobsnote"><b>Job postings &mdash; sector-level signal.</b> <span id="jobcount">45</span> digital-transformation roles collected across UK financial-services employers (Reed.co.uk). Monitored at sector level; <b>not attributable to individual candidates</b>. Examples:<div class="jobex" id="jobex"></div></div>
+</div></div>
+<div class="panel"><div class="trends"><div class="pt" style="margin-bottom:4px">Sector search momentum</div>
+<div class="hint" style="margin-bottom:14px">Google Trends momentum &middot; change in relative index points (0&ndash;100, within-batch normalised)</div><div id="bars"></div>
+<div class="legend">
+<div class="leg"><span class="sw" style="background:var(--green)"></span>General AI</div>
+<div class="leg"><span class="sw" style="background:var(--blue)"></span>Sector terms</div>
+<div class="leg"><span class="sw" style="background:var(--purple)"></span>Finance-specific AI</div>
+<div class="leg"><span class="sw" style="background:var(--grey)"></span>Industry jargon</div></div>
+<div class="note">Values are relative and normalised within batches &mdash; compare momentum/direction, not absolute levels across tiers.</div>
+</div></div>
+</div></div>
+<script>
+const D=__DATA__;const maxmom=__MAXMOM__;let sel=0;
+const tick='<svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="var(--green-bg)"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const cross='<svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="var(--grey-bg)"/><path d="M7 7l6 6M13 7l-6 6" stroke="var(--grey)" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const chev='<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const rd='<span class="dot" style="width:7px;height:7px;box-shadow:0 0 0 2px var(--red-bg)"></span>';
+function rowsH(){document.getElementById('rows').innerHTML=D.cands.map((c,i)=>`<tr class="${i===sel?'sel':''}" onclick="pick(${i})">
+<td><span class="co">${c.new?rd:''}${c.company}</span></td><td class="owner-c">${c.owner}</td><td class="date-c">${c.date}</td>
+<td><span class="badge ${c.band}">${c.band}</span></td></tr>`).join('');}
+function detH(){const c=D.cands[sel];document.getElementById('detail').innerHTML=`
+<div class="dco">${c.company}${c.new?'<span class="newbadge">New</span>':''}</div>
+<div class="downer">PE owner &middot; ${c.owner} &middot; detected ${c.date}</div>
+<div class="sec-label">Signal evidence</div>
+<div class="ev">${c.psc?tick:cross}<span class="et">Companies House PSC filing<small>ownership change recorded</small></span>${chev}</div>
+<div class="ev">${c.fca?tick:cross}<span class="et">FCA-authorised owner<small>${c.fca?'owner on FCA register':'no FCA match'}</small></span>${chev}</div>
+<div class="ev">${c.ftse?cross:tick}<span class="et">Mid-market scope<small>${c.ftse?'FTSE-350 subsidiary &mdash; out of scope':'not a FTSE-350 subsidiary'}</small></span>${chev}</div>
+<div class="caveat">&#9888; Ownership change not recorded in Orbis M&amp;A or PitchBook &mdash; consistent with the mid-market coverage gap. Treat as a triage lead pending analyst review, not a confirmed deal.</div>
+<button class="btn" onclick="this.textContent='&#10003; Marked as contacted';this.classList.add('done')">Mark as contacted</button>`;}
+function pick(i){sel=i;rowsH();detH();}
+// clickable LDA topics expanding to real k=3 keywords
+const topics=D.lda||[];
+document.getElementById('topics').innerHTML=topics.map((tp,i)=>
+ `<div class="topicwrap"><span class="chip" onclick="toggleTopic(${i})" id="chip${i}">${tp.label}</span>
+  <div class="topicterms" id="tt${i}"><b>Top terms:</b> ${tp.terms||'&mdash;'}</div></div>`).join('');
+window.toggleTopic=function(i){const tt=document.getElementById('tt'+i),c=document.getElementById('chip'+i);
+ const open=tt.classList.toggle('show');c.classList.toggle('open',open);};
+// job examples with transformation terms emphasised
+const jobs=D.jobs||[];const jc=D.jobcount||45;
+document.getElementById('jobcount').textContent=jc;
+const emph=s=>s.replace(/\b(digital transformation|transformation|data|digital|analytics|analyst|engineer)\b/gi,'<em>$1</em>');
+document.getElementById('jobex').innerHTML=jobs.length
+ ? jobs.map(j=>`<span class="jobchip">${emph(j)}</span>`).join('')
+ : '<span class="jobchip" style="color:var(--muted)">sector-level roles (Reed.co.uk)</span>';
+document.getElementById('bars').innerHTML=D.trends.map(([n,m,t])=>{const w=Math.max(2,(Math.max(0,m)/maxmom)*100);const s=m>0?'+':'';
+return `<div class="trow"><div class="tname">${n}</div><div class="tbar-track"><div class="tbar ${t}" style="width:${w}%"></div></div><div class="tval">${s}${m.toFixed(1)} pts</div></div>`;}).join('');
+rowsH();detH();
+</script></body></html>

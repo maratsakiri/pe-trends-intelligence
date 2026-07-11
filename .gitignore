@@ -1,0 +1,17 @@
+﻿.env
+.env.*
+*.key
+data/
+*.csv
+*.log
+venv/
+env/
+__pycache__/
+*.py[cod]
+PE_Pipeline_Dashboard_LIVE.html
+.DS_Store
+.vscode/
+.idea/
+
+debug_*.py
+test_*.py
