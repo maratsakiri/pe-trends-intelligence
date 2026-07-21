@@ -57,10 +57,21 @@ if fca is not None:
     if col:
         fca_yes = set(fca[fca[col].str.lower().isin(["true","1","yes","y"])]["company_name"])
 
-# FTSE flag
-ftse_set = set()
+# FTSE flag + parent
+ftse_set = set(); ftse_parent_map = {}
 if ann is not None and "is_ftse_subsidiary" in ann.columns:
     ftse_set = set(ann[ann["is_ftse_subsidiary"].str.lower()=="true"]["company_name"])
+    if "ftse_parent" in ann.columns:
+        ftse_parent_map = dict(zip(ann["company_name"], ann["ftse_parent"].fillna("")))
+
+# FCA FRN + status maps (for register links)
+fca_frn = {}; fca_stat = {}
+if fca is not None:
+    for _, fr in fca.iterrows():
+        nm = fr.get("company_name","")
+        if str(fr.get("fca_authorised","")).lower() in ("true","1","yes","y"):
+            fca_frn[nm] = fr.get("frn","")
+            fca_stat[nm] = fr.get("fca_status","")
 
 tier1["score"] = pd.to_numeric(tier1["tier1_detection_confidence"], errors="coerce").fillna(0)
 tier1 = tier1.drop_duplicates("company_name").sort_values("score", ascending=False)
@@ -88,12 +99,22 @@ TOPN = 15
 rows = []
 for _, r in tier1.head(TOPN).iterrows():
     c = r["company_name"]
+    ch_num = acq_u["company_number"].get(c, "") if "company_number" in acq_u.columns else ""
+    owner_type = acq_u["pe_owner_type"].get(c, "") if "pe_owner_type" in acq_u.columns else ""
+    sic_desc = acq_u["sic_description"].get(c, "") if "sic_description" in acq_u.columns else ""
+    nature = acq_u["nature_of_control"].get(c, "") if "nature_of_control" in acq_u.columns else ""
+    frn = fca_frn.get(c, "")
+    fca_status = fca_stat.get(c, "")
+    ftse_parent = ftse_parent_map.get(c, "")
     rows.append({
         "company": c, "owner": owner(c) or "—", "date": fmt_date(since(c)),
         "score": round(float(r["score"]),3), "band": band(float(r["score"])),
         "new": is_new(c),
         "psc": True,  # every candidate came from a PSC detection
         "fca": c in fca_yes, "ftse": c in ftse_set,
+        "ch_num": str(ch_num), "owner_type": str(owner_type), "sic_desc": str(sic_desc),
+        "nature": str(nature), "frn": str(frn), "fca_status": str(fca_status),
+        "ftse_parent": str(ftse_parent),
     })
 
 active = tier1["company_name"].nunique() - len(ftse_set)  # in-scope after FTSE

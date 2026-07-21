@@ -3,68 +3,78 @@
 :root{--bg:#f7f8fa;--surface:#fff;--border:#e3e7ed;--text:#1a2230;--text2:#647084;--muted:#8a94a6;
 --navy:#23395b;--accent:#2f5fa6;--green:#1f9254;--green-bg:#e6f4ec;--amber:#c0850f;--amber-bg:#fbf1dd;
 --grey:#6b7280;--grey-bg:#eef0f3;--red:#d23b34;--red-bg:#fbe9e8;--blue:#2f5fa6;--purple:#6b4ea0;
---radius:10px;--gap:16px;--shadow:0 1px 2px rgba(20,30,50,.04),0 1px 3px rgba(20,30,50,.06)}
+--radius:10px;--gap:14px;--shadow:0 1px 2px rgba(20,30,50,.04),0 1px 3px rgba(20,30,50,.06)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;line-height:1.5}
-.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 56px}
-.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px;flex-wrap:wrap;gap:10px}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:13.5px;line-height:1.45}
+.wrap{max-width:1500px;margin:0 auto;padding:24px 28px 30px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;flex-wrap:wrap;gap:8px}
 .head h1{font-size:20px;font-weight:650;color:var(--navy)}
-.head .sub{font-size:12.5px;color:var(--text2);margin-top:3px}
+.head .sub{font-size:12px;color:var(--text2);margin-top:3px}
 .head .ts{font-size:12px;color:var(--muted);text-align:right}
-.tagline{font-size:12.5px;color:var(--text2);margin-top:8px;max-width:74ch;line-height:1.5;font-style:italic}
-.vbanner{display:flex;gap:12px;align-items:flex-start;background:var(--amber-bg);border:1px solid #ecd9a8;border-radius:var(--radius);padding:13px 16px;margin-bottom:var(--gap);font-size:13px;color:#7a5608;line-height:1.5}
+.tagline{font-size:12px;color:var(--text2);margin-top:7px;max-width:110ch;line-height:1.45;font-style:italic}
+.vbanner{display:flex;gap:11px;align-items:flex-start;background:var(--amber-bg);border:1px solid #ecd9a8;border-radius:var(--radius);padding:11px 15px;margin-bottom:var(--gap);font-size:12.5px;color:#7a5608;line-height:1.45}
 .vbanner .vicon{font-size:16px;flex-shrink:0}
-.ctxhead{font-size:11px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.ctxhead{font-size:10.5px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;padding-bottom:5px;border-bottom:1px solid var(--border)}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-bottom:var(--gap)}
-.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
-.metric .label{font-size:11.5px;color:var(--text2);font-weight:550;text-transform:uppercase;display:flex;align-items:center;gap:6px}
-.metric .value{font-size:28px;font-weight:680;color:var(--navy);margin-top:8px}
-.metric .unit{font-size:12px;color:var(--muted);margin-top:2px}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+.metric .label{font-size:11px;color:var(--text2);font-weight:550;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.metric .value{font-size:26px;font-weight:680;color:var(--navy);margin-top:6px;line-height:1.15}
+.metric .unit{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.35}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;box-shadow:0 0 0 3px var(--red-bg)}
 .dot.pulse{animation:p 2s infinite}@keyframes p{0%,100%{opacity:1}50%{opacity:.45}}
-.row{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--gap);margin-bottom:var(--gap)}
+.row{display:grid;grid-template-columns:1.35fr 1fr;gap:var(--gap);margin-bottom:var(--gap)}
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-.panel .ph{padding:15px 18px 0}.panel .pt{font-size:14px;font-weight:640;color:var(--navy)}
-.panel .hint{font-size:11.5px;color:var(--muted);margin-top:3px}.panel .pb{padding:12px 8px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-thead th{text-align:left;padding:8px 12px;font-size:10.5px;text-transform:uppercase;color:var(--text2);font-weight:600;border-bottom:1px solid var(--border)}
-tbody td{padding:11px 12px;border-bottom:1px solid var(--border)}tbody tr{cursor:pointer}tbody tr:last-child td{border-bottom:none}
+.panel .ph{padding:14px 16px 0}.panel .pt{font-size:13.5px;font-weight:640;color:var(--navy)}
+.panel .hint{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4}.panel .pb{padding:10px 6px}
+table{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed}
+thead th{text-align:left;padding:8px 11px;font-size:10px;text-transform:uppercase;color:var(--text2);font-weight:600;border-bottom:1px solid var(--border);white-space:nowrap}
+thead th:nth-child(1){width:38%}thead th:nth-child(2){width:30%}thead th:nth-child(3){width:18%}thead th:nth-child(4){width:14%}
+tbody td{padding:9px 11px;border-bottom:1px solid var(--border);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}tbody tr{cursor:pointer}tbody tr:last-child td{border-bottom:none}
 tbody tr:hover{background:var(--bg)}tbody tr.sel{background:#e7eef8}tbody tr.sel td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
-.co{font-weight:600;display:flex;align-items:center;gap:7px}.owner-c{color:var(--text2);font-size:12.5px}
-.date-c{color:var(--text2);font-size:12.5px;white-space:nowrap}
-.badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.co{font-weight:600;display:flex;align-items:center;gap:5px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.owner-c{color:var(--text2);font-size:12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.date-c{color:var(--text2);font-size:12px;white-space:nowrap}
+.badge{display:inline-block;font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:20px}
 .badge.High{background:var(--green-bg);color:var(--green)}.badge.Medium{background:var(--amber-bg);color:var(--amber)}.badge.Low{background:var(--grey-bg);color:var(--grey)}
-.detail{padding:18px}.detail .dco{font-size:17px;font-weight:680;color:var(--navy);display:flex;align-items:center;gap:9px}
+.detail{padding:16px 18px}.detail .dco{font-size:16px;font-weight:680;color:var(--navy);display:flex;align-items:center;gap:9px}
 .newbadge{font-size:10.5px;font-weight:650;color:var(--red);background:var(--red-bg);padding:2px 8px;border-radius:20px;text-transform:uppercase}
-.detail .downer{font-size:13px;color:var(--text2);margin-top:3px}
-.sec-label{font-size:11px;font-weight:650;text-transform:uppercase;color:var(--text2);margin:18px 0 9px}
-.ev{display:flex;align-items:center;gap:11px;padding:11px 12px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px}
-.ev .et{flex:1;font-size:13px}.ev .et small{display:block;color:var(--muted);font-size:11px;margin-top:1px}
-.caveat{background:var(--amber-bg);border:1px solid #ecd9a8;border-radius:8px;padding:12px 13px;font-size:12px;color:#7a5608;margin-top:14px;line-height:1.5}
-.btn{margin-top:16px;width:100%;padding:11px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer}
+.detail .downer{font-size:12px;color:var(--text2);margin-top:3px}
+.sec-label{font-size:10.5px;font-weight:650;text-transform:uppercase;color:var(--text2);margin:15px 0 8px}
+.ev{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:8px;margin-bottom:7px}
+.ev .et{flex:1;font-size:12.5px}.ev .et small{display:block;color:var(--muted);font-size:10.5px;margin-top:1px}
+.ev.evopen{border-color:var(--accent);background:#f5f8fc}
+.ev.nolink{cursor:default}
+.evdetail{display:none;margin:-3px 0 8px 8px;padding:8px 12px;border-left:2px solid var(--border);font-size:11px;color:var(--text2)}
+.evdetail.show{display:block}
+.evdetail ul{margin:0;padding-left:16px}
+.evdetail li{margin:3px 0;line-height:1.45}
+.evdetail a{color:var(--accent);font-weight:600;text-decoration:none}
+.evdetail a:hover{text-decoration:underline}
+.caveat{background:var(--amber-bg);border:1px solid #ecd9a8;border-radius:8px;padding:11px 13px;font-size:11.5px;color:#7a5608;margin-top:12px;line-height:1.45}
+.btn{margin-top:14px;width:100%;padding:10px;background:var(--navy);color:#fff;border:none;border-radius:6px;font-size:10.5px;font-weight:600;cursor:pointer}
 .btn:hover{background:#1a2c47}.btn.done{background:var(--green)}
-.senti{padding:18px}.senti .big{font-size:36px;font-weight:700;color:var(--navy)}.senti .biglabel{font-size:12px;color:var(--text2)}
+.senti{padding:16px 18px}.senti .big{font-size:34px;font-weight:700;color:var(--navy);line-height:1.1}.senti .biglabel{font-size:11.5px;color:var(--text2);line-height:1.4}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.chip{font-size:12.5px;padding:7px 14px;border-radius:20px;background:var(--grey-bg);border:1px solid var(--border);cursor:pointer;display:inline-block}
+.chip{font-size:12px;padding:6px 13px;border-radius:20px;background:var(--grey-bg);border:1px solid var(--border);cursor:pointer;display:inline-block}
 .chip:hover{background:#e7eef8;border-color:var(--accent);color:var(--accent)}
 .chip.open{background:#e7eef8;border-color:var(--accent);color:var(--accent)}
-.topicwrap{margin-top:8px}
-.topicterms{font-size:12px;color:var(--text2);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 12px;margin-top:6px;line-height:1.6;display:none}
+.topicwrap{margin-top:4px}
+.topicterms{font-size:9.5px;color:var(--text2);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:5px 9px;margin-top:4px;line-height:1.45;display:none}
 .topicterms.show{display:block}
 .topicterms b{color:var(--navy)}
-.jobex{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
-.jobchip{display:inline-block;font-size:11.5px;padding:5px 11px;border-radius:14px;background:#fff;border:1px solid var(--border);color:var(--text2)}
+.jobex{margin-top:5px;display:flex;flex-wrap:wrap;gap:4px}
+.jobchip{display:inline-block;font-size:11px;padding:4px 10px;border-radius:14px;background:#fff;border:1px solid var(--border);color:var(--text2)}
 .jobchip em{color:var(--accent);font-style:normal;font-weight:600}
-.jobsnote{margin-top:16px;font-size:12px;color:var(--text2);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px 13px}
-.trends{padding:14px 18px 18px}
-.trow{display:grid;grid-template-columns:150px 1fr 96px;align-items:center;gap:10px;margin-bottom:7px}
-.tname{font-size:12.5px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tbar-track{height:16px;background:var(--bg);border-radius:4px;overflow:hidden}.tbar{height:100%;border-radius:4px;min-width:2px}
+.jobsnote{margin-top:14px;font-size:11.5px;color:var(--text2);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:7px 10px;line-height:1.45}
+.trends{padding:14px 18px 16px}
+.bars2col{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
+.trow{display:grid;grid-template-columns:120px 1fr 58px;align-items:center;gap:7px;margin-bottom:4px}
+.tname{font-size:11.5px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+.tbar-track{height:13px;background:var(--bg);border-radius:3px;overflow:hidden}.tbar{height:100%;border-radius:3px;min-width:2px}
 .tbar.ai{background:var(--green)}.tbar.sector{background:var(--blue)}.tbar.finai{background:var(--purple)}.tbar.jargon{background:var(--grey)}
-.tval{font-size:12px;font-family:ui-monospace,Menlo,monospace;color:var(--text2);text-align:right}
-.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;padding-top:13px;border-top:1px solid var(--border)}
-.leg{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--text2)}.leg .sw{width:11px;height:11px;border-radius:3px}
-.note{font-size:11px;color:var(--muted);margin-top:10px;font-style:italic}
+.tval{font-size:11px;font-family:ui-monospace,Menlo,monospace;color:var(--text2);text-align:right}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;padding-top:7px;border-top:1px solid var(--border)}
+.leg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)}.leg .sw{width:11px;height:11px;border-radius:3px}
+.note{font-size:10.5px;color:var(--muted);margin-top:9px;font-style:italic;line-height:1.4}
 @media(max-width:880px){.metrics{grid-template-columns:repeat(2,1fr)}.row{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
 <div class="head"><div><h1>PE Trends Intelligence</h1>
@@ -75,7 +85,7 @@ tbody tr:hover{background:var(--bg)}tbody tr.sel{background:#e7eef8}tbody tr.sel
 <div class="metric"><div class="label">Active candidates</div><div class="value">__ACTIVE__</div><div class="unit">after mid-market filtering</div></div>
 <div class="metric"><div class="label"><span class="dot pulse"></span> Recent detections</div><div class="value">__NEW__</div><div class="unit">within 30 days of latest scan</div></div>
 <div class="metric"><div class="label">FCA validated</div><div class="value">__FCA__</div><div class="unit">owner FCA-authorised</div></div>
-<div class="metric"><div class="label">PE search interest</div><div class="value">+19.1</div><div class="unit">relative index points, within-batch (Trends)</div></div>
+<div class="metric"><div class="label">PE search interest</div><div class="value">+19.1</div><div class="unit">relative index points momentum, 2021&ndash;2026 (Google Trends, within-batch)</div></div>
 </div>
 <div class="vbanner"><span class="vicon">&#9888;</span><div><b>Triage leads for analyst review.</b> Ownership changes are confirmed via Companies House PSC filings but <b>not</b> recorded in Orbis M&amp;A or PitchBook. Human verification is required before outreach.</div></div>
 <div class="row">
@@ -86,13 +96,13 @@ tbody tr:hover{background:var(--bg)}tbody tr.sel{background:#e7eef8}tbody tr.sel
 <div class="row">
 <div class="panel"><div class="senti"><div class="ctxhead">Sector context &mdash; use alongside candidate signals to assess market timing for outreach</div>
 <div class="pt" style="margin-bottom:14px">News sentiment &amp; topics</div>
-<div class="big">__NETSENT__</div><div class="biglabel">mean polarity (Loughran-McDonald, &minus;1 to +1) &middot; corpus of 153 articles</div>
+<div class="big">__NETSENT__</div><div class="biglabel">Tone of news coverage about the sector, scored &minus;1 (very negative) to +1 (very positive).<br><span style="color:var(--muted)">A score near zero means coverage is broadly neutral &mdash; a balanced mix of positive and negative reporting, with no strong prevailing mood. Negative scores indicate more cautious or critical coverage; positive scores indicate more optimistic coverage. At &minus;0.05 the sector's press is close to neutral, leaning very slightly cautious. (Measures coverage tone, not sector performance. Based on 153 articles; Guardian coverage was more negative than newswire coverage.)</span></div>
 <div class="sec-label" style="margin-top:18px">Dominant LDA topics (k=3)</div><div class="hint" style="margin-bottom:8px">Click a topic to view source articles</div>
 <div class="chips" id="topics"></div>
 <div class="jobsnote"><b>Job postings &mdash; sector-level signal.</b> <span id="jobcount">45</span> digital-transformation roles collected across UK financial-services employers (Reed.co.uk). Monitored at sector level; <b>not attributable to individual candidates</b>. Examples:<div class="jobex" id="jobex"></div></div>
 </div></div>
 <div class="panel"><div class="trends"><div class="pt" style="margin-bottom:4px">Sector search momentum</div>
-<div class="hint" style="margin-bottom:14px">Google Trends momentum &middot; change in relative index points (0&ndash;100, within-batch normalised)</div><div id="bars"></div>
+<div class="hint" style="margin-bottom:14px">Google Trends momentum &middot; change in relative index points (0&ndash;100, within-batch normalised)</div><div id="bars" class="bars2col"></div>
 <div class="legend">
 <div class="leg"><span class="sw" style="background:var(--green)"></span>General AI</div>
 <div class="leg"><span class="sw" style="background:var(--blue)"></span>Sector terms</div>
@@ -107,26 +117,67 @@ const tick='<svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle 
 const cross='<svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" fill="var(--grey-bg)"/><path d="M7 7l6 6M13 7l-6 6" stroke="var(--grey)" stroke-width="1.8" stroke-linecap="round"/></svg>';
 const chev='<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const rd='<span class="dot" style="width:7px;height:7px;box-shadow:0 0 0 2px var(--red-bg)"></span>';
-function rowsH(){document.getElementById('rows').innerHTML=D.cands.map((c,i)=>`<tr class="${i===sel?'sel':''}" onclick="pick(${i})">
+function rowsH(){document.getElementById('rows').innerHTML=D.cands.map((c,i)=>`<tr class="${i===sel?'sel':''}" data-i="${i}">
 <td><span class="co">${c.new?rd:''}${c.company}</span></td><td class="owner-c">${c.owner}</td><td class="date-c">${c.date}</td>
 <td><span class="badge ${c.band}">${c.band}</span></td></tr>`).join('');}
 function detH(){const c=D.cands[sel];document.getElementById('detail').innerHTML=`
 <div class="dco">${c.company}${c.new?'<span class="newbadge">New</span>':''}</div>
 <div class="downer">PE owner &middot; ${c.owner} &middot; detected ${c.date}</div>
 <div class="sec-label">Signal evidence</div>
-<div class="ev">${c.psc?tick:cross}<span class="et">Companies House PSC filing<small>ownership change recorded</small></span>${chev}</div>
-<div class="ev">${c.fca?tick:cross}<span class="et">FCA-authorised owner<small>${c.fca?'owner on FCA register':'no FCA match'}</small></span>${chev}</div>
-<div class="ev">${c.ftse?cross:tick}<span class="et">Mid-market scope<small>${c.ftse?'FTSE-350 subsidiary &mdash; out of scope':'not a FTSE-350 subsidiary'}</small></span>${chev}</div>
+<div class="ev" data-ev="psc"><span class="evic">${c.psc?tick:cross}</span><span class="et">Companies House PSC filing<small>ownership change recorded &middot; click for detail</small></span>${chev}</div>
+<div class="evdetail" id="ev-psc">
+  <ul>
+    <li>Company number: <b>${c.ch_num||'&mdash;'}</b></li>
+    <li>Detected owner: <b>${c.owner}</b>${c.owner_type?` (${c.owner_type})`:''}</li>
+    <li>Nature of control: ${c.nature||'ownership / voting rights'}</li>
+    <li>Ownership since: ${c.date}</li>
+    <li>${c.ch_num?`<a href="https://find-and-update.company-information.service.gov.uk/company/${c.ch_num}/persons-with-significant-control" target="_blank" rel="noopener">View PSC filing on Companies House &#8599;</a>`:'Companies House link unavailable'}</li>
+  </ul>
+</div>
+<div class="ev${c.fca?'':' nolink'}" data-ev="fca"><span class="evic">${c.fca?tick:cross}</span><span class="et">FCA-authorised owner<small>${c.fca?'owner on FCA register &middot; click for detail':'no FCA match'}</small></span>${c.fca?chev:''}</div>
+${c.fca?`<div class="evdetail" id="ev-fca"><ul>
+    <li>FRN: <b>${c.frn||'&mdash;'}</b></li>
+    <li>Status: ${c.fca_status||'Authorised'}</li>
+    <li>${c.frn?`<a href="https://register.fca.org.uk/s/firm?id=${c.frn}" target="_blank" rel="noopener">View on the FCA register &#8599;</a>`:'FCA register link unavailable'}</li>
+  </ul></div>`:''}
+<div class="ev" data-ev="ftse"><span class="evic">${c.ftse?cross:tick}</span><span class="et">Mid-market scope<small>${c.ftse?'FTSE-350 subsidiary &mdash; out of scope':'not a FTSE-350 subsidiary &middot; click for detail'}</small></span>${chev}</div>
+<div class="evdetail" id="ev-ftse">
+  <ul>
+    <li>${c.ftse?`Owned by a FTSE-350 group (<b>${c.ftse_parent||'listed parent'}</b>) &mdash; excluded as outside mid-market scope.`:`Not a subsidiary of any FTSE-350 constituent, so retained as a genuine mid-market candidate.`}</li>
+    <li>Sector: ${c.sic_desc||'financial services'}</li>
+    <li>Mid-market scope = UK financial-services companies <b>not</b> owned by FTSE-350 groups, matching Palladium's target universe.</li>
+  </ul>
+</div>
 <div class="caveat">&#9888; Ownership change not recorded in Orbis M&amp;A or PitchBook &mdash; consistent with the mid-market coverage gap. Treat as a triage lead pending analyst review, not a confirmed deal.</div>
-<button class="btn" onclick="this.textContent='&#10003; Marked as contacted';this.classList.add('done')">Mark as contacted</button>`;}
+<button class="btn" id="contactBtn">Mark as contacted</button>`;
+const cb=document.getElementById('contactBtn');
+if(cb)cb.addEventListener('click',function(){this.textContent='\u2713 Marked as contacted';this.classList.add('done');});
+// expandable signal-evidence rows (click to reveal detail); links inside still work
+const dp=document.getElementById('detail');
+dp.querySelectorAll('.ev[data-ev]').forEach(function(ev){
+ if(ev.classList.contains('nolink'))return;
+ ev.style.cursor='pointer';
+ ev.addEventListener('click',function(){
+   const d=document.getElementById('ev-'+ev.getAttribute('data-ev'));
+   if(d){const open=d.classList.toggle('show');ev.classList.toggle('evopen',open);}
+ });
+});}
 function pick(i){sel=i;rowsH();detH();}
+// Robust click handling via event delegation (works in restricted/wrapped viewers)
+document.getElementById('rows').addEventListener('click',function(e){
+ const tr=e.target.closest('tr[data-i]');
+ if(tr){pick(parseInt(tr.getAttribute('data-i'),10));}
+});
 // clickable LDA topics expanding to real k=3 keywords
 const topics=D.lda||[];
 document.getElementById('topics').innerHTML=topics.map((tp,i)=>
- `<div class="topicwrap"><span class="chip" onclick="toggleTopic(${i})" id="chip${i}">${tp.label}</span>
+ `<div class="topicwrap"><span class="chip" data-t="${i}" id="chip${i}">${tp.label}</span>
   <div class="topicterms" id="tt${i}"><b>Top terms:</b> ${tp.terms||'&mdash;'}</div></div>`).join('');
-window.toggleTopic=function(i){const tt=document.getElementById('tt'+i),c=document.getElementById('chip'+i);
- const open=tt.classList.toggle('show');c.classList.toggle('open',open);};
+document.getElementById('topics').addEventListener('click',function(e){
+ const c=e.target.closest('.chip[data-t]'); if(!c)return;
+ const i=c.getAttribute('data-t'); const tt=document.getElementById('tt'+i);
+ const open=tt.classList.toggle('show'); c.classList.toggle('open',open);
+});
 // job examples with transformation terms emphasised
 const jobs=D.jobs||[];const jc=D.jobcount||45;
 document.getElementById('jobcount').textContent=jc;
